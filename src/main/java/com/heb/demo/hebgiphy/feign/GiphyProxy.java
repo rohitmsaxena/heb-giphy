@@ -14,4 +14,12 @@ public interface GiphyProxy {
                             @RequestParam("offset") Integer offset,
                             @RequestParam("rating") String rating,
                             @RequestParam("lang") String lang);
+
+    @GetMapping(value = "trending")
+    GiphyResponseDto trending(@RequestParam("api_key") String apiKey,
+                            @RequestParam("q") String search,
+                            @RequestParam("limit") Integer limit,
+                            @RequestParam("offset") Integer offset,
+                            @RequestParam("rating") String rating,
+                            @RequestParam("lang") String lang);
 }

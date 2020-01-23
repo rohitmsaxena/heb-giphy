@@ -16,7 +16,7 @@ class GiphyData {
     private String bitly_url;
     private String embed_url;
     private String username;
-    private String source;
+//    private String source;
     private String title;
     private String rating;
 //    private String content_url;
