@@ -3,6 +3,7 @@ package com.heb.demo.hebgiphy;
 import com.google.auth.oauth2.GoogleCredentials;
 import com.google.firebase.FirebaseApp;
 import com.google.firebase.FirebaseOptions;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.cloud.openfeign.EnableFeignClients;
@@ -21,31 +22,20 @@ import java.util.List;
 @EnableFeignClients
 public class HebGiphyApplication {
 
-    public static void main(String[] args) {
+    @Value("${firebase.database.url}")
+    private static String firebaseDBUrl;
+
+    public static void main(String[] args) throws IOException {
         SpringApplication.run(HebGiphyApplication.class, args);
-//        System.out.println(new File("./resources").getAbsolutePath());\
 
-//        ClassLoader classLoader = HebGiphyApplication.class.getClassLoader();
+        FileInputStream serviceAccount = new FileInputStream("src/main/resources/hebgiphydemo-firebase-adminsdk-7xpp6-eebff97602.json");
 
-        FileInputStream serviceAccount = null;
-        try {
-            serviceAccount = new FileInputStream("src/main/resources/hebgiphydemo-firebase-adminsdk-7xpp6-eebff97602.json");
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
-        }
-
-        FirebaseOptions options = null;
-        try {
-            options = new FirebaseOptions.Builder()
+        FirebaseOptions options  = new FirebaseOptions.Builder()
                     .setCredentials(GoogleCredentials.fromStream(serviceAccount))
-                    .setDatabaseUrl("https://hebgiphydemo.firebaseio.com")
+                    .setDatabaseUrl(firebaseDBUrl)
                     .build();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
 
         FirebaseApp.initializeApp(options);
-        List<FirebaseApp> apps = FirebaseApp.getApps();
-        System.out.println(apps);
+        System.out.println(FirebaseApp.getApps());
     }
 }

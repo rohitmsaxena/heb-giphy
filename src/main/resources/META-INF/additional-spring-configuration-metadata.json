@@ -14,5 +14,10 @@
       "name": "giphy.lang",
       "type": "java.lang.String",
       "description": "Description for giphy.lang."
+    },
+    {
+      "name": "firebase.database.url",
+      "type": "java.lang.String",
+      "description": "Description for firebase.database.url."
     }
   ] }

@@ -28,17 +28,6 @@ public class GiphyController {
                                    @RequestParam String query,
                                    @RequestParam(required = false, defaultValue = "20") Integer limit,
                                    @RequestParam(required = false, defaultValue = "0") Integer offset) {
-//        log.debug("Query {}", query);
-//        log.debug("Limit {}", limit);
-//        log.debug("Offset {}", offset);
-
-//        String id = this.authenticationService.verify(idToken);
-
-//        System.out.println(uid);
-
-//        System.out.println(query);
-//        System.out.println(limit);
-//        System.out.println(offset);
         return giphyService.search(query, limit, offset);
     }
 
