@@ -5,6 +5,8 @@ import com.heb.demo.hebgiphy.feign.dto.GiphyResponseDto;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class GiphyService {
     @Value("${giphy.api_key}")
@@ -22,14 +24,6 @@ public class GiphyService {
         this.giphyProxy = giphyProxy;
     }
 
-//    public GiphyResponseDto search(String searchField) {
-//        return search(searchField ,20,0);
-//    }
-//
-//    public GiphyResponseDto search(String searchField, Integer limit) {
-//        return search(searchField ,limit,0);
-//    }
-
     /**
      * @param searchField Search field to query
      * @param limit total number of results. Defaults to 25
@@ -38,5 +32,9 @@ public class GiphyService {
      */
     public GiphyResponseDto search(String searchField, Integer limit, Integer offset) {
         return giphyProxy.search(api_key, searchField ,limit,offset, rating, lang);
+    }
+
+    public GiphyResponseDto getGiphysById(List<String> giphyIds) {
+        return giphyProxy.getGiphsByIds(api_key, String.join(",", giphyIds));
     }
 }

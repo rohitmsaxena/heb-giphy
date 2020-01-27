@@ -29,7 +29,7 @@ public class HebGiphyApplication {
 
         FileInputStream serviceAccount = null;
         try {
-            serviceAccount = new FileInputStream("C:\\Users\\Rohit Saxena\\IdeaProjects\\heb-giphy\\src\\main\\resources\\hebgiphydemo-firebase-adminsdk-7xpp6-eebff97602.json");
+            serviceAccount = new FileInputStream("src/main/resources/hebgiphydemo-firebase-adminsdk-7xpp6-eebff97602.json");
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         }
@@ -48,15 +48,4 @@ public class HebGiphyApplication {
         List<FirebaseApp> apps = FirebaseApp.getApps();
         System.out.println(apps);
     }
-
-    @Bean
-    public WebMvcConfigurer corsConfigurer() {
-        return new WebMvcConfigurer() {
-            @Override
-            public void addCorsMappings(CorsRegistry registry) {
-                registry.addMapping("/giphy/search").allowedOrigins("http://localhost:4200");
-            }
-        };
-    }
-
 }

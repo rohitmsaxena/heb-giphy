@@ -11,6 +11,6 @@ import java.util.List;
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class GiphyResponseDto {
     private List<GiphyData> data;
-    private GiphyPagination pagination;
-    private GiphyMeta meta;
+//    private GiphyPagination pagination;
+//    private GiphyMeta meta;
 }
